@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import threading
 
 
-current_data = None
+current_data = 0
 last_flap = False
 threashold = 50
 
@@ -26,12 +26,14 @@ t.start()
 # Create your views here.
 
 def api(request):
+    global last_flap
     if last_flap == False and current_data > threashold:
         last_flap = True
         return HttpResponse("flap")
     elif last_flap == True and current_data < threashold:
         last_flap = False
-        return HttpResponse("unflap")
+        return HttpResponse("un")
+    return HttpResponse("nothing")
     
 
 def index(request):
