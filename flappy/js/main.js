@@ -52,7 +52,7 @@ let cnv = function(s) {
     s.draw = function() {
 
         if(flappy.died){
-            this.s.background(255, 0, 0)
+            
         }
         else{
             s.background(100)
