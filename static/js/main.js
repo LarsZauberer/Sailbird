@@ -25,7 +25,22 @@ window.onload = function () {
 
 };
 
+function get_data () {
+    let xml = new XMLHttpRequest();
+    xml.open("GET", "/api", true);
+    xml.send();
+    xml.onreadystatechange = function () {
+        if (xml.readyState == 4 && xml.status == 200) {
+            console.log(xml.responseText);
+            if (xml.responseText.includes("flap")) {
+                console.log("true");
+                flappy.flap();
+            }
+        }
+    }
+}
 
+setInterval(get_data, 10);
 
 
 
